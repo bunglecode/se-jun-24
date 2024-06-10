@@ -3,3 +3,6 @@ body {
     text-align: center;
 }
 
+.task-container {
+    min-height: 100px;
+}
