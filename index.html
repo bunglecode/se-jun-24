@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deployment Pipeline Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Deployment Pipeline Tracker</h1>
+    <div class="container">
+        <div class="column" id="dev">
+            <h2>Dev</h2>
+            <div class="task-container" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+        <div class="column" id="test">
+            <h2>Test</h2>
+            <div class="task-container" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+        <div class="column" id="pre-prod">
+            <h2>Pre-Prod</h2>
+            <div class="task-container" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+        <div class="column" id="prod">
+            <h2>Prod</h2>
+            <div class="task-container" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+    </div>
+    <button onclick="addTask()">Add Task</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
