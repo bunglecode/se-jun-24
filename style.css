@@ -3,6 +3,20 @@ body {
     text-align: center;
 }
 
+.container {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.column {
+    border: 1px solid #ccc;
+    width: 200px;
+    margin: 0 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
 .task-container {
     min-height: 100px;
 }
