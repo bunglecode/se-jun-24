@@ -6,3 +6,11 @@ body {
 .task-container {
     min-height: 100px;
 }
+
+.task {
+    background-color: #fff;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: move;
+}
