@@ -33,3 +33,13 @@ function addTask() {
         document.querySelector("#dev .task-container").appendChild(taskContainer);
     }
 }
+
+function editTask(id) {
+    const task = document.getElementById(id);
+    const taskText = prompt("Edit task description:", task.querySelector("p").innerText);
+    const assignedTo = prompt("Assign to:", task.querySelector("p:nth-child(2)").innerText.split(": ")[1]);
+    if (taskText) {
+        task.querySelector("p").innerText = taskText;
+        task.querySelector("p:nth-child(2)").innerText = `Assigned to: ${assignedTo}`;
+    }
+}
