@@ -12,7 +12,14 @@ function drop(ev) {
     ev.preventDefault();
     const data = ev.dataTransfer.getData("text");
     const task = document.getElementById(data);
-    ev.target.appendChild(task);
+    const target = ev.target;
+    
+    // Ensure we're appending to the task container
+    if (target.classList.contains("task-container")) {
+        target.appendChild(task);
+    } else if (target.classList.contains("column")) {
+        target.querySelector(".task-container").appendChild(task);
+    }
 }
 
 function addTask() {

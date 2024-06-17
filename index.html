@@ -9,19 +9,19 @@
 <body>
     <h1>Deployment Pipeline Tracker</h1>
     <div class="container">
-        <div class="column" id="dev">
+        <div class="column" id="dev" ondrop="drop(event)" ondragover="allowDrop(event)">
             <h2>Development</h2>
             <div class="task-container"></div>
         </div>
-        <div class="column" id="test">
+        <div class="column" id="test" ondrop="drop(event)" ondragover="allowDrop(event)">
             <h2>Test</h2>
             <div class="task-container"></div>
         </div>
-        <div class="column" id="pre-prod">
+        <div class="column" id="pre-prod" ondrop="drop(event)" ondragover="allowDrop(event)">
             <h2>Pre-Production</h2>
             <div class="task-container"></div>
         </div>
-        <div class="column" id="prod">
+        <div class="column" id="prod" ondrop="drop(event)" ondragover="allowDrop(event)">
             <h2>Production</h2>
             <div class="task-container"></div>
         </div>
