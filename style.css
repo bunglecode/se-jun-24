@@ -24,9 +24,11 @@ body {
 }
 
 .task {
-    background-color: #fff;
+    background-color: #e3f2fd;
     margin: 10px 0;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #90caf9;
+    border-radius: 5px;
     cursor: move;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
