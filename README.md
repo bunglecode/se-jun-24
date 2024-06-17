@@ -1,2 +1,4 @@
-# se-jun-24
-Software Engineering June 2024 Summative 1 submission
+# Software Engineering Summative 1
+Northeastern University submission
+
+# Deployment Pipeline Tracker
