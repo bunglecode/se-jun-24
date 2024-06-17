@@ -43,3 +43,8 @@ function editTask(id) {
         task.querySelector("p:nth-child(2)").innerText = `Assigned to: ${assignedTo}`;
     }
 }
+
+function deleteTask(id) {
+    const task = document.getElementById(id);
+    task.parentNode.removeChild(task);
+}
