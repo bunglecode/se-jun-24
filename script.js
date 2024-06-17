@@ -14,6 +14,7 @@ function drop(ev) {
     const task = document.getElementById(data);
     const target = ev.target;
     
+    // Ensure we're appending to the task container
     if (target.classList.contains("task-container")) {
         target.appendChild(task);
     } else if (target.classList.contains("column")) {
