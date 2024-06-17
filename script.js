@@ -8,6 +8,13 @@ function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
 }
 
+function drop(ev) {
+    ev.preventDefault();
+    const data = ev.dataTransfer.getData("text");
+    const task = document.getElementById(data);
+    ev.target.appendChild(task);
+}
+
 function addTask() {
     const taskText = prompt("Enter task description:");
     const assignedTo = prompt("Assign to:");
