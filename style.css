@@ -14,7 +14,9 @@ body {
     width: 200px;
     margin: 0 10px;
     padding: 10px;
-    background-color: #f9f9f9;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .task-container {
@@ -22,9 +24,24 @@ body {
 }
 
 .task {
-    background-color: #fff;
+    background-color: #e3f2fd;
     margin: 10px 0;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #90caf9;
+    border-radius: 5px;
     cursor: move;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #42a5f5;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
