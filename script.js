@@ -4,6 +4,10 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
 function addTask() {
     const taskText = prompt("Enter task description:");
     const assignedTo = prompt("Assign to:");
