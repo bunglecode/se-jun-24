@@ -1,5 +1,9 @@
 let taskIdCounter = 0;
 
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
 function addTask() {
     const taskText = prompt("Enter task description:");
     const assignedTo = prompt("Assign to:");
