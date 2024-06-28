@@ -1,24 +1,24 @@
-let taskIdCounter = 0;
+let taskIdCounter = 0; // Initialize a counter for task IDs
 
 function allowDrop(ev) {
-    ev.preventDefault();
+    ev.preventDefault(); // Prevent the default handling of the event to allow dropping
 }
 
 function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
+    ev.dataTransfer.setData("text", ev.target.id); // Set the ID of the dragged element in the data transfer object
 }
 
 function drop(ev) {
-    ev.preventDefault();
-    const data = ev.dataTransfer.getData("text");
-    const task = document.getElementById(data);
-    const target = ev.target;
-    
+    ev.preventDefault(); // Prevent the default handling of the event
+    const data = ev.dataTransfer.getData("text"); // Get the ID of the dragged element from the data transfer object
+    const task = document.getElementById(data); // Get the dragged element by its ID
+    const target = ev.target; // Get the drop target element
+
     // Ensure we're appending to the task container
     if (target.classList.contains("task-container")) {
-        target.appendChild(task);
+        target.appendChild(task); // Append the task to the target if it's a task container
     } else if (target.classList.contains("column")) {
-        target.querySelector(".task-container").appendChild(task);
+        target.querySelector(".task-container").appendChild(task); // Append the task to the target's task container if the target is a column
     }
 }
 
@@ -30,20 +30,20 @@ function addTask() {
         alert("Task description cannot be empty.");
         return;
       }
-
+  
     if (taskText) {
-        const taskContainer = document.createElement("div");
-        taskContainer.className = "task";
-        taskContainer.id = `task-${taskIdCounter++}`;
-        taskContainer.draggable = true;
-        taskContainer.ondragstart = drag;
+        const taskContainer = document.createElement("div"); // Create a new div element for the task
+        taskContainer.className = "task"; // Set the class of the task container
+        taskContainer.id = `task-${taskIdCounter++}`; // Set the ID of the task container and increment the counter
+        taskContainer.draggable = true; // Make the task container draggable
+        taskContainer.ondragstart = drag; // Set the drag event handler for the task container
         taskContainer.innerHTML = `
             <p>${taskText}</p>
             <p>Assigned to: ${assignedTo}</p>
             <button onclick="editTask('${taskContainer.id}')">Edit</button>
             <button onclick="deleteTask('${taskContainer.id}')">Delete</button>
-        `;
-        document.querySelector("#dev .task-container").appendChild(taskContainer);
+        `; // Set the inner HTML of the task container
+        document.querySelector("#dev .task-container").appendChild(taskContainer); // Append the task container to the dev task container
     }
 }
 
@@ -58,8 +58,8 @@ function editTask(id) {
       }
 
     if (taskText) {
-        task.querySelector("p").innerText = taskText;
-        task.querySelector("p:nth-child(2)").innerText = `Assigned to: ${assignedTo}`;
+        task.querySelector("p").innerText = taskText; // Update the task description
+        task.querySelector("p:nth-child(2)").innerText = `Assigned to: ${assignedTo}`; // Update the assignee
     }
 }
 
