@@ -25,6 +25,12 @@ function drop(ev) {
 function addTask() {
     const taskText = prompt("Enter task description:");
     const assignedTo = prompt("Assign to:");
+
+    if (!isTaskDescriptionValid(taskText)) {
+        alert("Task description cannot be empty.");
+        return;
+      }
+
     if (taskText) {
         const taskContainer = document.createElement("div");
         taskContainer.className = "task";
@@ -45,6 +51,12 @@ function editTask(id) {
     const task = document.getElementById(id);
     const taskText = prompt("Edit task description:", task.querySelector("p").innerText);
     const assignedTo = prompt("Assign to:", task.querySelector("p:nth-child(2)").innerText.split(": ")[1]);
+
+    if (!isTaskDescriptionValid(taskText)) {
+        alert("Task description cannot be empty.");
+        return;
+      }
+
     if (taskText) {
         task.querySelector("p").innerText = taskText;
         task.querySelector("p:nth-child(2)").innerText = `Assigned to: ${assignedTo}`;
@@ -55,3 +67,18 @@ function deleteTask(id) {
     const task = document.getElementById(id);
     task.parentNode.removeChild(task);
 }
+
+function isTaskDescriptionValid(taskDescription) {
+    return typeof taskDescription === 'string' && taskDescription.trim().length > 0;
+  }
+  
+
+module.exports = {
+    allowDrop,
+    drag,
+    drop,
+    addTask,
+    editTask,
+    deleteTask,
+    isTaskDescriptionValid
+  };
