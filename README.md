@@ -7,7 +7,9 @@ Northeastern University submission
 ## About
 Developer: James Saunders \
 \
-GitHub Username: @bunglecode
+GitHub Username: @bunglecode \
+\
+Access the app [here](https://bunglecode.github.io/se-jun-24/).
 
 ![app screenshot](https://github.com/bunglecode/se-jun-24/assets/53307096/9517c99e-f10d-4192-8098-c98ec320054e)
 
@@ -97,6 +99,23 @@ I also used camel case when defining and calling functions, making the syntax ea
 
 # Testing
 ## Unit Testing Using Jest
-## Performance and Accesibility Testing
+## Google Lighthouse Analysis
+In order to ensure the best user experience for as many different types of user as possible, I used [Google Lighthouse](https://developer.chrome.com/docs/lighthouse/overview) to audit my application's performance, accessibility, SEO, and best practices.
+- Performance - A measure of how quickly a web page load and become interactive, recording metrics like how fast the first piece of content is rendered.
+- Accessibility - How well can the web page be used by people with disabilities, like colour blindness or those who use keyboard navigation? The accessibility measure checks this.
+- SEO (Search Engine Optimisation) - How easily can the web page be indexed for search engines? If well, then it can be disovered more easily. SEO is often seen as a form of marketing as it relates to getting your web page in front of the right people.
+- Best Practices - This measure checks coding standards, security, and other web standards.
+
+The scores I received can be seen in the image below: \
+\
+![glighthouse](https://github.com/bunglecode/se-jun-24/assets/53307096/a0e40be6-2bbb-463e-8c41-8713b4845cd9) \
+The scores overall were acceptable for deployment, signalled by the green colour and the scores being all between 90-100. However, the accessibility score being 90 suggested there are some users that would struggle to use my application, which I was keen to solve. Google Lighthouse's analysis report let me know that this was due to the contrast of the text colour on the buttons and and headers being too low against the light blue background. \
+\
+![failing elements](https://github.com/bunglecode/se-jun-24/assets/53307096/d95e8f48-2db3-4f14-90d7-3c8d20b58451) \
+Lighthouse provided a link to a [colour contrast checker](https://dequeuniversity.com/rules/axe/4.9/color-contrast) that helps you find an acceptable contrast. I used this to find an acceptable contrast for white text, which ended up being a brown (hex code #611919) that I was happy to use in my application.
+
+
+
 
 # Evaluation
+(With more time I would make it mobile friendly.)
