@@ -23,8 +23,14 @@ function drop(ev) {
 }
 
 function addTask() {
-    const taskText = prompt("Enter task description:"); // Prompt the user for a task description
-    const assignedTo = prompt("Assign to:"); // Prompt the user for an assignee
+    const taskText = prompt("Enter task description:");
+    const assignedTo = prompt("Assign to:");
+
+    if (!isTaskDescriptionValid(taskText)) {
+        alert("Task description cannot be empty.");
+        return;
+      }
+  
     if (taskText) {
         const taskContainer = document.createElement("div"); // Create a new div element for the task
         taskContainer.className = "task"; // Set the class of the task container
@@ -42,9 +48,15 @@ function addTask() {
 }
 
 function editTask(id) {
-    const task = document.getElementById(id); // Get the task element by its ID
-    const taskText = prompt("Edit task description:", task.querySelector("p").innerText); // Prompt the user to edit the task description
-    const assignedTo = prompt("Assign to:", task.querySelector("p:nth-child(2)").innerText.split(": ")[1]); // Prompt the user to edit the assignee
+    const task = document.getElementById(id);
+    const taskText = prompt("Edit task description:", task.querySelector("p").innerText);
+    const assignedTo = prompt("Assign to:", task.querySelector("p:nth-child(2)").innerText.split(": ")[1]);
+
+    if (!isTaskDescriptionValid(taskText)) {
+        alert("Task description cannot be empty.");
+        return;
+      }
+
     if (taskText) {
         task.querySelector("p").innerText = taskText; // Update the task description
         task.querySelector("p:nth-child(2)").innerText = `Assigned to: ${assignedTo}`; // Update the assignee
@@ -52,6 +64,21 @@ function editTask(id) {
 }
 
 function deleteTask(id) {
-    const task = document.getElementById(id); // Get the task element by its ID
-    task.parentNode.removeChild(task); // Remove the task element from its parent node
-};
+    const task = document.getElementById(id);
+    task.parentNode.removeChild(task);
+}
+
+function isTaskDescriptionValid(taskDescription) {
+    return typeof taskDescription === 'string' && taskDescription.trim().length > 0;
+  }
+  
+
+module.exports = {
+    allowDrop,
+    drag,
+    drop,
+    addTask,
+    editTask,
+    deleteTask,
+    isTaskDescriptionValid
+  };
