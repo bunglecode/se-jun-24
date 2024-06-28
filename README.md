@@ -91,6 +91,13 @@ I created a prototype that showcases deleting a task, adding a task, and moving 
 \
 I have also created an alternative visual, which I will show later. The purpose of this was to gauge the aesthetic with end users, allowing me to perform A/B testing to determine which of the visuals users seem to prefer.
 
+# A/B Testing
+I created a [Google form](https://forms.gle/YdFE3kosTBXQQWUF8) to collect responses between a couple of design choices. My hypothesis was that columns would be a better layout for my application. This is because the target market of my application is developers, who are likely to be familiar or often use Kanban boards, which is where I got the inspiration for the column 'lanes'. However, I did not want to blindly assume this would be a preferred layout, so I developed a row option on the form. I sent the form to some co-workers and the results were as follows: \
+\
+![results](https://github.com/bunglecode/se-jun-24/assets/53307096/6d1d3d59-9e4f-4dc7-bfa5-b5ed34b77b8e) \
+The results clearly state that the column layout is preferred, supporting my hypothesis.
+
+
 # Managing the Project with GitHub Projects
 I used GitHub Projects to create a Kanban board for building my app. Since this was a shorter project, it was not appropriate to divide my development up into sprints, but I still created individual tasks on the Kanban board so I could keep track of the status of each one. See the example of this below:\
 \
@@ -119,7 +126,7 @@ I also used camel case when defining and calling functions, making the syntax ea
 
 
 # Testing
-## Unit Testing Using Jest
+## Test Driven Development Using Jest
 I created unit tests within the ```script.test.js``` file in my repo, where the tests are run using Jest. Jest unit testing is useful as it allows me to check new javascript I write in ```script.js``` as I code, keeping a cumulative bank of tests based on the type of code I write. For example, in the ```addTask``` function of my ```script.js``` file, I check that the task description is not empty before allowing the user to create the task. Following this, I wrote a unit test that checks multiple strings to ensure my function can identify empty strings accurately. The code for this is below:
 ```js
 test('isTaskDescriptionValid should return true for non-empty strings', () => {
@@ -153,7 +160,7 @@ Lighthouse provided a link to a [colour contrast checker](https://dequeuniversit
 The SEO score remained at 90, which according to Lighthouse was due to the omission of a meta description in my HTML file. I added one, describing what my application did, then I re-ran Lighthouse once more. I received a score of 100 for SEO, confirming all my changes were appropriate.
 \
 ![100](https://github.com/bunglecode/se-jun-24/assets/53307096/5ca879c1-15d5-40c4-84cd-af02916e9111) \
-Getting 100 on all of the analysis features was fairly simple as my application is lightweight, but for some more dense applications it could be much harder to reach a perfect score. Nonetheless, Lighthouse seems a relevant (and free) tool to get as close as possible, ensuring users are kept at the forefront of development.
+Getting 100 on all of the analysis features was fairly simple as my application is lightweight, but for some more dense applications it could be much harder to reach a perfect score. Nonetheless, Lighthouse seems a relevant (and free) tool to get as close as possible, ensuring user experience is kept at the forefront of development.
 
 ## Manual Accessbility Testing
 Using Google Lighthouse is very useful for visual accessibility validity, but I wanted to ensure the functional accessibility of the site was checked as well.
