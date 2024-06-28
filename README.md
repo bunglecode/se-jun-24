@@ -69,15 +69,31 @@ I created a prototype that showcases deleting a task, adding a task, and moving 
 I have also created an alternative visual, which I will show later. The purpose of this was to gauge the aesthetic with end users, allowing me to perform A/B testing to determine which of the visuals users seem to prefer.
 
 # Managing the Project with GitHub Projects
-I used GitHub Projects to create a Kanban board for building my app. Since this was a shorter project, it was not appropriate to divide my development up into sprints, but I still created individual tasks on the Kanban board so I could keep track of the status of each one. See the example of this below:
+I used GitHub Projects to create a Kanban board for building my app. Since this was a shorter project, it was not appropriate to divide my development up into sprints, but I still created individual tasks on the Kanban board so I could keep track of the status of each one. See the example of this below:\
+\
 ![Kanban board](https://github.com/bunglecode/se-jun-24/assets/53307096/6f3b5a5f-a59c-45a4-ab0c-9c087d2f4e72)
-In each task, I assigned myself as an Asignee, gave the task a label out of enhancement, bug, action (coding an action or event), or styling, linked it to my Software Engineering Summative 1 project, and then created a branch directly from the task so it would be linked.
+In each task, I assigned myself as an Asignee, gave the task a label out of enhancement, bug, action (coding an action or event), or styling, linked it to my Software Engineering Summative 1 project, and then created a branch directly from the task so it would be linked.\
+\
 ![example task](https://github.com/bunglecode/se-jun-24/assets/53307096/7ba6d1cc-af1c-4712-bebf-a5d03dafc8c8)
 Having all my tasks laid out and organised like this meant I could directly compare and prioritise them. I could also get a quick view of my "In Progress" tasks to make sure I was not overloading myself with too much concurrent development.\
 \
 Another benefit of using this board was that I could manage my time better, because the tasks were in smaller bites. I could more accurately estimate the amount of time it would take to complete a task, which was invaluable given the quick turnaround required for this application. It meant I could focus on producing a finished product with the most important functionalities, employing MoSCoW to determine which were "must haves", and park some nice-to-have features for a future iteration. This is what working Agile is all about: flexibility, transparency, and iterative development.
 
 # How I Built the Prototype in Visual Studio Code
+Producing the MVP consisted of the following steps:
+1. I developed the HTML script skeleton, adding text and headers, as well as the head information.
+2. I started styling using a CSS script. There were some parts of the application I could not yet style, such as the task boxes, because they would be created when I write the javascript.
+3. In the js file, I started by defining a counter for task IDs to ensure each task has a unique identifier.
+4. I then created the add, edit and delete task functions. The add task function prompts the user for a task description and assignee, then dynamically generates a task element with edit and delete options.
+5. Adding the task functions meant I could go back and style them using CSS.
+6. I then created the functions for dragging and dropping the task boxes between columns.
+7. I finished off by styling the buttons that exists in the app, including interactive styling, like hover.
+
+While writing the code as described above, I ensured that I made every effort to adhere to coding best practice. For example, in the image below, I have used comments for each line of code, describing what it is doing operationally. This helps in handover situations, where a new developer may takeover from another on a project and must get familiar with the code that has already been written. Comments help to reduce this cumbersome task by providing natural language explanations of the code directly from the person who wrote it.\
+I also used camel case when defining and calling functions, making the syntax easier to read as a reader can see where a new word in the functions begins and ends.\
+\
+![code syntax](https://github.com/bunglecode/se-jun-24/assets/53307096/265c9fe6-b1bf-404d-a3c4-fcd6dadb322a)
+
 
 # Testing
 ## Unit Testing Using Jest
