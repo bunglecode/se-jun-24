@@ -11,7 +11,7 @@ GitHub Username: @bunglecode \
 \
 Access the app [here](https://bunglecode.github.io/se-jun-24/).
 
-![app screenshot](https://github.com/bunglecode/se-jun-24/assets/53307096/9517c99e-f10d-4192-8098-c98ec320054e)
+![app screenshot new](https://github.com/bunglecode/se-jun-24/assets/53307096/94d50ebb-87f4-47b0-bb66-78e9cdc6cd74)
 
 This web application is designed to help data engineering teams keep track of the state of their deployments throughout the development environments. The app allows users to add deployments, edit and delete them, enter an assignee, and drag and drop the deployment tasks between the columns labelled by environment. In future versions of this app, I plan to include a login system for security purposes and the ability to filter the board by assignee. \
 \
@@ -112,10 +112,34 @@ The scores I received can be seen in the image below: \
 The scores overall were acceptable for deployment, signalled by the green colour and the scores being all between 90-100. However, the accessibility score being 90 suggested there are some users that would struggle to use my application, which I was keen to solve. Google Lighthouse's analysis report let me know that this was due to the contrast of the text colour on the buttons and and headers being too low against the light blue background. \
 \
 ![failing elements](https://github.com/bunglecode/se-jun-24/assets/53307096/d95e8f48-2db3-4f14-90d7-3c8d20b58451) \
-Lighthouse provided a link to a [colour contrast checker](https://dequeuniversity.com/rules/axe/4.9/color-contrast) that helps you find an acceptable contrast. I used this to find an acceptable contrast for white text, which ended up being a brown (hex code #611919) that I was happy to use in my application.
+Lighthouse provided a link to a [colour contrast checker](https://dequeuniversity.com/rules/axe/4.9/color-contrast) that helps you find an acceptable contrast. I used this to find an acceptable contrast for white text, which ended up being a brown (hex code #611919) that I was happy to use in my application. After comitting this style change and re-running Lighthouse for the updated page, I received a score of 100 for accessibility.
+\
+![fdgfdg](https://github.com/bunglecode/se-jun-24/assets/53307096/ed6d7d05-b0d2-4b36-b4df-80749edbb963) \
+The SEO score remained at 90, which according to Lighthouse was due to the omission of a meta description in my HTML file. I added one, describing what my application did, then I re-ran Lighthouse once more. I received a score of 100 for SEO, confirming all my changes were appropriate.
+\
+![100](https://github.com/bunglecode/se-jun-24/assets/53307096/5ca879c1-15d5-40c4-84cd-af02916e9111) \
+Getting 100 on all of the analysis features was fairly simple as my application is lightweight, but for some more dense applications it could be much harder to reach a perfect score. Nonetheless, Lighthouse seems a relevant (and free) tool to get as close as possible, ensuring users are kept at the forefront of development.
 
+## Manual Accessbility Testing
+Using Google Lighthouse is very useful for visual accessibility validity, but I wanted to ensure the functional accessibility of the site was checked as well.
+
+### Keyboard Navigation
+I tested keyboard navigation on my application and noticed that the buttons do not change colour when they are currently selected by pressing tab. This was important to rectify, so I added a 'button:focus' section in my CSS file to account for this oversight. The code is shown below:
+```
+button:focus {
+    background-color: #9F2828;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+```
+
+### Screen Readers
+I added a Chrome extension called [Read Aloud: A Text to Speech Voice Reader](https://chromewebstore.google.com/detail/read-aloud-a-text-to-spee/hdhinadidafjejdhmfkjgnolgimiaplp) in order to test my web page for screen reading. The first thing I noticed is that the only text being picked up by the reader was text within tasks I had added, not the header or the "Add Task" button at the bottom of the page. I was able to get the screen reader to recognise the header text by highlighting it, a feature of the extension I added, but this was not as easy to do for the button without accidentally clicking it. Additionally, expecting visually impaired users to highlight text before the screen reader can notice it is not acceptable. Admittedly, I did not have time to figure out a solution for this for the MVP, but it has been added as a task on the project board for a future iteration.
 
 
 
 # Evaluation
-(With more time I would make it mobile friendly.)
+Overall, the design of my application is something I am happy with. For the MVP, I focused only on the desktop version of the application, but in future iterations I would be keen to make the page more responsive so users can access it via mobile devices. There are a couple of other future iterations I have planned, including a login system with team areas so the application becomes as collaborative as originally intended. I would also like to improve the accessibility of the application where Lighthouse did not detect issues, as detailed in the accessibility testing section above. \
+\
+The functionality of the application is easy to understand, with a lightweight design and clear action buttons that lead the user through stages to creating, editing, or deleting a task. The task dragging is perhaps less obvious; perhaps adding some instructions on the page would be a useful addition in the future. With such a lightweight design, creating clear section was important. This is why I added box shadows to each column lane, along with a subheader for each. Also, when a task is added, a slightly darker thin border rim hugs the content and buttons to clearly distinguishing them from each other. I also added some aesthetic nice-to-haves, like the background of a button going a lighter shade of brown when the mouse hovers over it. This is mirrored in the previously discussed tab selection highlighting, which is as functionally required as it is an aesthetic choice. \
+\
+The main goal of the design was to keep it minimal with some colourful accents to inject personality, but not overload the page with busy design choices to avoid detracting from the core purpose. As more features are added in future iterations, I imagine some design choices will have to be re-evaluated as well, but for now I am happy with how my app looks and functions.
