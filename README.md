@@ -1,8 +1,6 @@
 # Software Engineering Summative 1
 Northeastern University submission
 
-### Codecov
-
 # Deployment Pipeline Tracker
 ## About
 Developer: James Saunders \
@@ -22,6 +20,20 @@ To summarise, the app aims to:
 - Provide a simple UI with intuitive drag and drop mechanics.
 - Keep design lightweight, avoiding the likelihood of glitches as described when using Microsoft Teams method.
 - Provide clear status for each deployment and who owns which.
+
+# Technical Documentation
+## Tech Stack
+- HTML
+- CSS
+- JS
+- jest
+
+## Repo content
+- index.html
+- style.css
+- script.js
+- script.test.js (needed to execute tests)
+- package.json (needed to execute tests)
 
 # Development Practice
 While developing the app, I used Git branches and commands to capitalise on version control and automated integration. Known as best practice in the world of DevOps, I was able to create branches specific to certain features of the app or bugs that needed to be fixed, for example. This helps with organising your project as you can essentially break it down into digestible chunks, ensuring you do not get overwhelmed as easily. Each of these chunks, or branches, can be tested in isolation before merging them with the main branch that end users will experience. The branch owner can also assign a peer reviewer during the creation of a pull request (which is created when merging into the main branch), decreasing the likelihood of bugs making it through to the main branch. This methodology is often referred to as **continuous integration**.\
@@ -54,12 +66,21 @@ git clone https://github.com/bunglecode/se-jun-24
 ```
 Doing this will create a local copy of the repo on your machine. Locate the copy to be able to see the code.
 
-### 3. Run tests in script.test.js:
-Providing npm has been installed in step 1, run the code below to execute the tests:
+### 3. Check npm package for vulnerabilities:
+Run this in terminal:
+```sh
+npm install
+```
+
+### 4. Run tests in script.test.js:
+Providing npm has been installed in step 3, run the code below in terminal to execute the tests:
 ```sh
 npm test
 ```
-The test results will appear in the terminal when it has finished or encountered an error. It will detail the number of tests that passed/failed amongst the tests it was able to execute.
+The test results will appear in the terminal when it has finished or encountered an error. It will detail the number of tests that passed/failed amongst the tests it was able to execute. See example below:
+
+![tests](https://github.com/bunglecode/se-jun-24/assets/53307096/ebacab58-a9f5-4f95-9a41-cc96e46776ac)
+
 
 # Designing the User Interface (UI)
 [Figma presentation link](https://www.figma.com/proto/J8f1aNzDHAWvMtgQhlYhWB/Deployment-Pipeline-Tracker?node-id=0-1&t=dk3OftWDntUV0y0F-1)
@@ -69,6 +90,13 @@ Using Figma, my main goal was to show the core functionalities of the applicatio
 I created a prototype that showcases deleting a task, adding a task, and moving a task by drag and drop. The prototype allows me to demonstrate the application to stakeholders or end users, for example, so they can see what the application will resemble when the coding has finished. This is especially valuable in an Agile context, where mock-ups may need to be whipped up quickly to demonstrate a new feature for the scrum members to deliberate over when setting up the next sprint. It can also be a good motivation tool for both the stakeholders and the developers, the former because they have something tangible to look at/play with and the latter because they have a clear visual goal (and some basic functionality framework if using Figma prototypes).\
 \
 I have also created an alternative visual, which I will show later. The purpose of this was to gauge the aesthetic with end users, allowing me to perform A/B testing to determine which of the visuals users seem to prefer.
+
+# A/B Testing
+I created a [Google form](https://forms.gle/YdFE3kosTBXQQWUF8) to collect responses between a couple of design choices. My hypothesis was that columns would be a better layout for my application. This is because the target market of my application is developers, who are likely to be familiar or often use Kanban boards, which is where I got the inspiration for the column 'lanes'. However, I did not want to blindly assume this would be a preferred layout, so I developed a row option on the form. I sent the form to some co-workers and the results were as follows: \
+\
+![results](https://github.com/bunglecode/se-jun-24/assets/53307096/6d1d3d59-9e4f-4dc7-bfa5-b5ed34b77b8e) \
+The results clearly state that the column layout is preferred, supporting my hypothesis.
+
 
 # Managing the Project with GitHub Projects
 I used GitHub Projects to create a Kanban board for building my app. Since this was a shorter project, it was not appropriate to divide my development up into sprints, but I still created individual tasks on the Kanban board so I could keep track of the status of each one. See the example of this below:\
@@ -98,7 +126,21 @@ I also used camel case when defining and calling functions, making the syntax ea
 
 
 # Testing
-## Unit Testing Using Jest
+## Test Driven Development Using Jest
+I created unit tests within the ```script.test.js``` file in my repo, where the tests are run using Jest. Jest unit testing is useful as it allows me to check new javascript I write in ```script.js``` as I code, keeping a cumulative bank of tests based on the type of code I write. For example, in the ```addTask``` function of my ```script.js``` file, I check that the task description is not empty before allowing the user to create the task. Following this, I wrote a unit test that checks multiple strings to ensure my function can identify empty strings accurately. The code for this is below:
+```js
+test('isTaskDescriptionValid should return true for non-empty strings', () => {
+    expect(isTaskDescriptionValid('Task 1')).toBe(true);
+    expect(isTaskDescriptionValid('  Task 2  ')).toBe(true);
+    expect(isTaskDescriptionValid('')).toBe(false);
+    expect(isTaskDescriptionValid('   ')).toBe(false);
+    expect(isTaskDescriptionValid(null)).toBe(false);
+    expect(isTaskDescriptionValid(undefined)).toBe(false);
+    expect(isTaskDescriptionValid(123)).toBe(false);
+});
+```
+After testing this and seeing that it passed, I can rest assured that if I use this function again elsewhere, it will do its purpose effectively. On top of this, it will remain in my test file, so if for some reason the function breaks, running a test later will catch the error and inform me. This is essential for agile developement, as it ensures that unit tests are constantly run as the application evolves, meaning when an error is caught it can be dealt with promptly. Another benefit of unit testing is that it is relatively simple to implement. [Jest's documentation](https://jestjs.io/docs/getting-started) is very easy to read and understand if you have a basic knowledge of javascript, so the tests you write can be as simple or as complicated as you require.
+
 ## Google Lighthouse Analysis
 In order to ensure the best user experience for as many different types of user as possible, I used [Google Lighthouse](https://developer.chrome.com/docs/lighthouse/overview) to audit my application's performance, accessibility, SEO, and best practices.
 - Performance - A measure of how quickly a web page load and become interactive, recording metrics like how fast the first piece of content is rendered.
@@ -118,14 +160,14 @@ Lighthouse provided a link to a [colour contrast checker](https://dequeuniversit
 The SEO score remained at 90, which according to Lighthouse was due to the omission of a meta description in my HTML file. I added one, describing what my application did, then I re-ran Lighthouse once more. I received a score of 100 for SEO, confirming all my changes were appropriate.
 \
 ![100](https://github.com/bunglecode/se-jun-24/assets/53307096/5ca879c1-15d5-40c4-84cd-af02916e9111) \
-Getting 100 on all of the analysis features was fairly simple as my application is lightweight, but for some more dense applications it could be much harder to reach a perfect score. Nonetheless, Lighthouse seems a relevant (and free) tool to get as close as possible, ensuring users are kept at the forefront of development.
+Getting 100 on all of the analysis features was fairly simple as my application is lightweight, but for some more dense applications it could be much harder to reach a perfect score. Nonetheless, Lighthouse seems a relevant (and free) tool to get as close as possible, ensuring user experience is kept at the forefront of development.
 
 ## Manual Accessbility Testing
 Using Google Lighthouse is very useful for visual accessibility validity, but I wanted to ensure the functional accessibility of the site was checked as well.
 
 ### Keyboard Navigation
 I tested keyboard navigation on my application and noticed that the buttons do not change colour when they are currently selected by pressing tab. This was important to rectify, so I added a 'button:focus' section in my CSS file to account for this oversight. The code is shown below:
-```
+```css
 button:focus {
     background-color: #9F2828;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
